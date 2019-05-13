@@ -1,0 +1,14 @@
+.container{
+  padding: 0 20rpx;
+}
+.container .mainTitle{
+  font-size: 40rpx;
+  font-weight: 300;
+  margin-bottom: 20rpx;
+
+}
+.container .subHead{
+  font-size: 26rpx;
+  color: #666;
+  letter-spacing: 2rpx;
+}

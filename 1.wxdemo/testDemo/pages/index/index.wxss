@@ -1,0 +1,26 @@
+/* pages/index/index.wxss */
+page{
+    background-color: #00b26a;
+}
+.container{
+    /* 弹性布局 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 220rpx;
+}
+.avatar{
+    width: 160rpx;
+    height: 160rpx;
+    border-radius: 50%;
+}
+.name{
+    margin-top: 40rpx;
+    font-size: 32rpx;
+    color: #666;
+}
+.welcome{
+    margin-top: 200rpx;
+    padding: 20rpx 40rpx;
+    border: 2rpx solid #666;
+}

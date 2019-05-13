@@ -1,0 +1,141 @@
+.wrapper{
+  padding: 30rpx 15rpx 0 15rpx;
+}
+/* 头部标题区 */
+.wrapper .top-container text{
+  font-size: 46rpx;
+}
+/* 日期区 */
+.wrapper .date-container{
+  padding: 20rpx 0;
+}
+.wrapper .date-container text{
+  font-size: 34rpx;
+}
+.wrapper .date-container text:first-child{
+  color: blue;
+  margin-right: 16rpx;
+}
+/* 中间内容区 */
+.wrapper .media-container{
+  margin: 10rpx 15rpx;
+}
+/* 轮播图 */
+.wrapper .media-container .media-swiper{
+  width: 100%;
+  height: 500rpx;
+}
+.wrapper .media-container swiper-item{
+  width: 100%;
+  height: 100%;
+}
+.wrapper .media-container swiper-item image{
+  width: 100%;
+  height: 500rpx;
+}
+/* 视频 */
+.wrapper .media-container .media-video{
+  width: 100%;
+  height: 500rpx;
+}
+.wrapper .media-container .media-video .controls{
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  position: relative;
+}
+.wrapper .media-container .media-video .controls .controls-box{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -50rpx;
+  margin-top: -50rpx;
+  width: 100rpx;
+  height: 100rpx;
+  background-color: rgba(0,0,0,0.6);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.wrapper .media-container .media-video .controls .controls-box cover-image{
+  width: 30rpx;
+  height: 30rpx;
+  margin-top: 20rpx;
+}
+.wrapper .media-container .media-video .controls .controls-box cover-view{
+  font-size: 24rpx;
+  color:#fff;
+}
+/* 音频 */
+.wrapper .media-container .media-audio{
+  height: 220rpx;
+  display: flex;
+  margin-bottom: 30rpx;
+  background-color: #fdfdfd;
+  /* border: 1px solid #000; */
+}
+.wrapper .media-container .media-audio .audio-play{
+  width: 20%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.wrapper .media-container .media-audio .audio-play image{
+  width: 80rpx;
+  height: 80rpx; 
+  margin-left: 30rpx;
+}
+.wrapper .media-container .media-audio .audio-connect{
+  height: 100%;
+}
+.wrapper .media-container .media-audio .audio-connect .singname{
+  margin-top: 32rpx;
+  font-size: 42rpx;
+}
+.wrapper .media-container .media-audio .audio-connect .singer{
+  margin-top: 10rpx;
+  font-size: 30rpx;
+}
+.wrapper .media-container .media-audio .audio-connect .audprogress{
+  position: relative;
+  margin-top: 20rpx;
+  width: 520rpx;
+}
+.wrapper .media-container .media-audio .audio-connect .audprogress view{
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+  background-color: #00b26a;
+  position: absolute;
+  top: 50%;
+  margin-top: -10rpx;
+}
+.wrapper .media-container .media-audio .audio-connect .audtime{
+  margin-top: 20rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.wrapper .media-container .media-audio .audio-connect .audtime text{
+  color: #666;
+  font-size: 24rpx;
+}
+
+/* 文章内容区 */
+.wrapper .article-container text{
+  margin-top: 30rpx;
+  font-size: 34rpx;
+  /* 设置text-indent不起效果时，将元素设置为快元素/行内快元素 */
+  text-indent: 2em;
+  display: block;
+}
+
+/* 文字底部阅读数 */
+.wrapper .bottom-container{
+  margin-top: 18rpx;
+  margin-left: 5rpx;
+  font-size: 34rpx;
+}
+.wrapper .bottom-container text{
+  padding: 3rpx 8rpx;
+}

@@ -1,0 +1,6 @@
+
+<!-- like组件：两张图片的切换 -->
+<view class="container">
+  <image class="image" src="image/Icon_circle.png" hidden="{{like}}" catch:tap="onLike"></image>
+  <image class="image" src="image/Icon_circle_fill.png" hidden="{{!like}}" catch:tap="onLike"></image>
+</view>

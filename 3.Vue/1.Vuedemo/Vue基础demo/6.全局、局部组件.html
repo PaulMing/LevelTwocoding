@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- <course-list></course-list> -->
+        <!-- <course></course> -->
+        <!-- <courseList></courseList>错误写法，没效果 -->
+         <course-list :list="demoData"></course-list>
+    </div>
+  
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script>
+        // 全局组件
+        Vue.component('courseList',{
+            template: `<div>hello-vue<div>`
+        })
+        // 局部组件 -> 若局部组件和全局组件同名，系统会使用局部组件
+        const courseList = {
+            // 不写props属性其接收不到父组件的传值
+            props: ['list'],//直接接收值
+            // 更为详细的处理数据
+            // props: {
+            //     // list: String,//数据为字符串形式
+            //     // list: [String,Array],//数据为字符串或数组形式
+            //     // 更完善的形式
+            //     type: Array,
+            //     default: [],//默认值
+            //     required: true,//父组件是否向子组件传值，若设置了true,但父组件并未向其传值，报警告
+            //     validator(value){
+            //         return value.length < 5;
+            //     }//检验 -> 对数据进行校验
+            // },
+            template: `<div>hello-vue!<div>`
+        }
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                demoData: {}
+                
+            },
+            components: {
+                // course: {
+                //     template: `<div>hello-vue<div>`
+                // }
+                // courseList: courseList,
+                courseList
+            }
+        })
+   
+        
+        
+        
+    </script>
+</body>
+</html>

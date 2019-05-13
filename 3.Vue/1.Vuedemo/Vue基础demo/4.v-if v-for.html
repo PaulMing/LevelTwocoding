@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        // 建议频繁操作使用v-show; 一次操作使用v-if
+        v-if= true/false;//添加、移除
+        v-show= true/false;//display:none/block; ->更节省性能
+        // v-if、v-else-if、v-else使用过程中必须紧紧挨着，中间若有其它标签其会报错
+    -->
+    <!-- 
+        v-for= "value in obj";//其可遍历对象、数组、字符串、数字
+        // 遍历数组、对象时，若增加/删除元素，其不会自动更新视图，此时需要使用Vue.set();或者vm.$set();
+        // v-for若和v-if同时作用于同一节点，其的权重更大
+        v-bind:key="";//其表示不会重复渲染html模版，常结合v-for使用，但是其也可以在其他场景中使用，例如v-if，其聚焦点便是不会重复渲染模版
+        <template>标签的使用不会出现在页面上，便于v-for循环多个节点 -> 常配合v-if/v-for使用，微信小程序中使用<block>
+    -->
+    <div id="app">
+        <div v-if="show" style="width: 100px; height: 200px; background: red"></div>
+        
+        <div v-if="show1">kakaka</div> 
+        <div v-else-if="show2">kakaka</div>
+        <div v-else>kakaka</div>
+        
+        <br>
+        <div v-show="show" style="width: 100px; height: 200px; background: red"></div>
+        
+        <button @click="showDiv">click</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                show: true,
+            },
+            methods: {
+                showDiv(){
+                    this.show = !this.show;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

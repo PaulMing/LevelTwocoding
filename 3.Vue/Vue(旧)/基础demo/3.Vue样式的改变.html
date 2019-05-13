@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .shape{
+            width: 100px;
+            margin: 10px;
+            height: 100px;
+            background-color: gray;
+        }
+        .red{
+            background-color: red;
+        } 
+        .blue{
+            background-color: blue;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="shape" @click = "changeShape" :style="{'border-radius':borderRadius}"></div>
+        <button @click = "start">开始</button>
+        <div class="shape" :class="{red:isRed,blue:!isRed}"></div>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                borderRadius: '0%',
+                isRed: true
+            },
+            methods: {
+                start: function(){
+                    var vm = this
+                    setInterval(function(){
+                        vm.isRed = !vm.isRed
+                    },1000)
+                },
+                changeShape: function(){
+                    if(this.borderRadius == '0%'){
+                        this.borderRadius = '50%'
+                    }else{
+                        this.borderRadius = '0%'
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

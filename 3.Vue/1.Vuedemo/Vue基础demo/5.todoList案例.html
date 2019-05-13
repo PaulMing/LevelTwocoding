@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        li{
+            list-style-type:lower-alpha;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        Vue中使用input框中的value值是单向数据，使用v-model="" 指令在表单 <input>、<textarea> 及 <select> 元素上创建双向数据绑定
+        
+        v-model.lazy="";//lazy修饰符转换为change事件
+        v-model.number="";//其将用户输入值转为数值类型
+        v-model.trim='';//自动过滤首尾空白字符
+
+     -->
+    <div id="app">
+        <!-- <input type="text" v-model="inputVal" @input="addTask" > -->
+        <!-- <input type="text" v-model.lazy="inputVal"> -->
+        <!-- <input type="text" v-model.trim="inputVal" @change="addTask" > -->
+        <input type="text" v-model.trim="inputVal" @keyup.enter="addTask()" >   
+        <button @click="addTask()">提交</button>
+        <span style="color: red;">{{prompt}}</span>
+        <ul>
+            <!-- <div>{{inputVal}}</div> -->
+            <li v-for="(item,index) in todoList" :key='item'>  
+                <span>{{item}}</span>
+                <button @click="completeTask(index)">&times;</button>
+            </li>
+        </ul>
+        <div>已完成任务</div>
+        <ul>
+            <li v-for="item in completeList" :key='item'>{{item}}</li>
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                inputVal: '',
+                prompt: '请输入任务',
+                todoList: [],
+                completeList: [],
+            },
+            methods: {
+                addTask(){
+                    // console.log(this.inputVal);
+                    // console.log(this);//this永远指向Vue实例，不会是window,或者谁触发指向谁，因此，data属性中必须写inputVal:'';
+                    // this.todoList = this.inputVal
+                   
+                    // if(this.inputVal == ''){
+                    //     this.prompt = "亲~ 不能输入空任务";
+                    //     return;
+                    // }
+                    // if(this.todoList.includes(this.inputVal)){
+                    //     this.prompt = "亲~ 不能输入相同的任务欧~"
+                    //     return;
+                    // }
+                    // this.todoList.push(this.inputVal);
+                    // this.inputVal = '';
+
+                    if(this.inputVal == ''){
+                        this.prompt = "亲~ 不能输入空任务";
+                    }else if(this.todoList.includes(this.inputVal)){
+                        this.prompt = "亲~ 不能输入相同的任务欧~"
+                    }else {
+                        this.todoList.push(this.inputVal);
+                        this.inputVal = '';
+                    }
+                },
+                completeTask(index){
+                    const task = this.todoList.splice(index,1);//splice();自动刷新视图    
+                    this.completeList.push(task.join(''));
+                    // this.completeList.push(...task);
+                }
+            },
+            // watch: {
+            //     inputVal(){
+            //         this.todoList.push(this.inputVal);
+            //         this.inputVal = '';
+            //     }
+            // }
+        })  
+    </script>
+</body>
+</html>

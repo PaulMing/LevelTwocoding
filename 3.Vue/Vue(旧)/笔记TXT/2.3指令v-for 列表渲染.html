@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul{
+            width: 200px;
+            height: 200px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <div id="app">
+        <ul>
+            <!-- v-for指令：其可循环数组、对象、数字、字符串 -->
+            <!-- 底层实现同原生写法效果相同，只不过书写代码更加简洁 -->
+            <li v-for="item in moveies">{{item.name}} | {{item.rate}}</li>
+            <!-- item、index变量名称可以进行更改 -->
+            <li v-for="(item,index) in moveies">{{item.name}} | {{item.rate}} | {{index}}</li>
+            <!-- 遍历对象：value属性值，prop属性名，index索引 -->
+            <p v-for="value in person">{{value}}</p>
+            <p v-for="(value,prop,index) in person" @click="changeMovie(index)">{{value}}|{{prop}}|{{index}}</p>
+       
+            <!-- 遍历数字：1-10 -->
+            <p v-for="num in 10">{{num}}</p>
+            <!-- 遍历字符串 -->
+            <p v-for="num in 'hellovue'">{{num}}</p> 
+        </ul>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                show: 2,
+                // moveies: ["电影1","电影2","电影3","电影4"],
+                moveies: [
+                    {
+                    name: "电影1",
+                    rate: 6.0
+                    },
+                    {
+                    name: "电影2",
+                    rate: 7.0
+                    },
+                    {
+                    name: "电影3",
+                    rate: 8.0
+                    },
+                    {
+                    name: "电影4",
+                    rate: 9.0
+                    },
+                ],
+                person: {
+                    name: 'paulMing',
+                    age: 19,
+                    sex: '男'
+                }
+            },
+            methods: {
+                changeMovie: function(index){
+                    console.log(index);
+                    // 由于内存地址不同，
+                    // this.movies[index] = {
+                    //     movie: '索马里海盗',
+                    //     rate: '8.8',
+                    // }
+                    let arr = this.movies.concat();
+                    arr[index] = {
+                        movie: '索马里海盗',
+                        rate: '9.0'
+                    },
+                    this.movies = arr
+                },
+                add: function(){
+                    this.movies.push({
+                        movie: '肖申克的救赎',
+                        rate: '6.6'
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+</html>

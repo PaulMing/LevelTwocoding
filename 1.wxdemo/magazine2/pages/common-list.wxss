@@ -1,0 +1,66 @@
+/* 中间内容区 */
+.main-container{
+  background-color: #ebebeb;
+  padding: 100rpx 35rpx 0 35rpx;
+}
+.main-container .first-main{
+  background-color: #fff;
+  margin-top: 26rpx;
+}
+.main-container .first-main .article-top {
+  padding: 16rpx;
+}
+.main-container .first-main .article-top image{
+   width: 60rpx;
+   height: 60rpx;
+   border-radius: 50%;
+   /* 图片与文字对齐方式 */
+   vertical-align: middle;
+   margin-right: 10rpx;
+}
+.main-container .first-main .article-top text{
+  display: inline-block;
+  font-size: 40rpx;
+}
+.main-container .first-main .article-pic{
+  margin-top: 8rpx;
+  text-align: center;
+}
+.main-container .first-main .article-des{
+  margin: 20rpx 30rpx 16rpx 30rpx;
+  font-size: 38rpx;
+}
+.main-container .first-main .article-bottom{
+  padding: 30rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.main-container .first-main .article-bottom text{
+  padding: 10rpx 20rpx;
+  border: 1px solid #000;
+}
+.main-container .first-main .article-bottom .handle{
+  display: flex;
+}
+.main-container .first-main .article-bottom .handle view image{
+  width: 50rpx;
+  height: 50rpx;
+  margin-left: 20rpx;
+}
+.main-container .first-main .article-bottom .handle view .butn{
+  background-color: transparent;
+  width: 100rpx;
+  height: 50rpx;
+  position: relative;
+  left: 8rpx;
+  bottom: 10rpx;
+}
+/* button组件中的border是伪元素*/
+.main-container .first-main .article-bottom .handle view .butn::after{
+  border: none;
+}
+.main-container .first-main .article-bottom .handle .viefirst{
+  position: relative;
+  left: 40rpx;
+  z-index: 999;
+}

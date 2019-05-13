@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <div id="app">
+        <!-- 其写函数执行形式也OK:upperCase() -->
+        <div>{{namecaption | upperCase(true)}}</div>
+        <div>{{namecaption | firstWordUp | removeSpace()}}</div>
+    </div>
+    <script>
+        // 全局过滤器 -> val值系统自动传入，不需要手动传入
+        Vue.filter('upperCase',function(val,isFirstWorld){
+            val = val.toString();
+            if(isFirstWorld){
+                return val.charAt(0).toUpperCase() + val.slice(1)
+            }else{
+                return val.toUpperCase();
+            }
+        })
+        new Vue({
+            el: "#app",
+            data: {
+                namecaption: "hello world"
+            },
+            // 局部过滤器 -> val值系统自动传入，不需要手动传入
+            filters: {
+                firstWordUp: function(val){
+                    val = val.toString();var arr = val.split(" ");
+                    var newarr = arr.map(function(value){
+                        return value.charAt(0).toUpperCase() + value.slice(1)
+                    })
+                    return newarr.join('');
+                },
+                removeSpace: function(val){
+                    return val.toString().replace(/ /g,'');
+                }
+            }
+        })
+    </script>
+</body>
+</html>

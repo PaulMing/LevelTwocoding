@@ -1,0 +1,12 @@
+
+<scroll-view class="container" 
+             scroll-x="{{true}}
+             scroll-into-view="{{activeId}}"
+             scroll-with-animation="true">
+    <text wx:for="{{magazineTypeArr}}"
+          wx:key="*this"
+          data-index="{{index}}"
+          class="type {{index === magazineIndex ? 'active': ''}}"
+          bind:tap="onTap"
+          id="{{'magazine'+index}}">{{item}}</text>
+</scroll-view>

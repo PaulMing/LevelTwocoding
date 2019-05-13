@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加学生</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .addStudent {
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+            width: 400px;
+            height: 300px;
+            background: gray;
+            border: 1px solid;
+        }
+
+        .title{
+            height: 50px;
+            width: 100%;
+            background: #2aabd2;
+            line-height: 50px;
+            color: #fff;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .input_content {
+            width: 100%;
+            height: 40px;
+            border: 0px;
+            margin-top: 20px;
+        }
+
+        #submit {
+            position: relative;
+            margin-top: 20px;
+            width: 100%;
+            height: 40px;
+            margin-left: auto;
+            margin-right: auto;
+            background: #4cae4c;
+            color: #fff;
+            text-align: center;
+            line-height: 40px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+
+    <script>
+        function submit() {
+            var name = document.getElementById("name").value;
+            var sex = document.getElementById("sex").value;
+            var birth = document.getElementById("birth").value;
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', "/insertStudent?name=" + name + "&sex=" + sex + "&birth=" + birth, true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200 || xhr.status == 304) {
+                    var result = JSON.parse(xhr.responseText);
+                    alert(result.msg);
+                    location.href = "/student.html";
+                }
+            };
+            xhr.send();
+        }
+    </script>
+</head>
+<body>
+    <div class="addStudent">
+        <div class="title">添 加 学 生</div>
+        <input type="text" placeholder="学生姓名" id="name" class="input_content"/>
+        <select id="sex" class="input_content">
+            <option value="1">男</option>
+            <option value="0">女</option>
+        </select>
+        <input type="date" placeholder="出生日期" id="birth" class="input_content"/>
+
+        <div id="submit" onclick="submit()">提交</div>
+    </div>
+</body>
+</html>

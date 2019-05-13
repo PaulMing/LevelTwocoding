@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <div id="app">
+        <p>{{name}}</p>
+        <p>{{age * 3}}</p>
+        <img v-bind:src="imgsrc" alt="">
+        <input type="text" v-on:input="changeName" v-bind:placeholder="name">
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                name: 'paul',
+                age: 18,
+                imgsrc: "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=156655977,1803690223&fm=27&gp=0.jpg"
+            },
+            methods: {
+                changeName: function(e){
+                    this.name = e.target.value;
+                }
+            }
+        })
+    </script>  
+</body>
+</html>

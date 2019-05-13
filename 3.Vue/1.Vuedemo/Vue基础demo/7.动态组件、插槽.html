@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <button @click="changeOne">切换哈</button>
+        <!-- <cmp-One v-if="showOne"></cmp-One> -->
+        <!-- <cmp-Two v-else></cmp-Two> -->
+
+        <!-- 作用域插槽 -->
+        <cmp-two>
+            <!-- 其把数据传输到了list -->
+            <template slot-scope="list">
+                <li>{{list.item}} - {{list.index}}</li>
+            </template>
+        </cmp-two>
+
+        <!-- 动态组件 -->
+        <component is="cmpOne">
+            <span slot="before">slot</span>
+            <span slot="after">slot</span>
+        </component>
+        <!-- <component :is="type"></component> -->
+
+        <!-- 其会将动态组件放到缓存中 -->
+        <!-- <keep-alive>
+            <component :is="type"></component>
+        </keep-alive> -->
+    </div>
+  
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script>
+        const cmpOne = {
+            template: `<div>
+                        <slot name="before"></slot>
+                         组件1：<input type="value" >
+                         <slot name="after"></slot>   
+                
+                       </div>`
+        }
+        // const cmpTwo = {
+        //     template: `<div>组件2：<input type="value" ></div>`
+        // }
+        const cmpTwo = {
+            template: `<div>组件2：<input type="value" >
+                            <ul>
+                                <slot v-for="(item,index) in list"
+                                      :key="item"
+                                      :item="item"
+                                      :index="index">  
+                                </slot>   
+                            </ul>
+                       </div>`
+        }
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                showOne: true,
+                type: 'cmp-one'
+            },
+            components: {
+                cmpOne,
+                cmpTwo
+            },
+            methods: {
+                changeOne(){
+                    // this.showOne = !this.showOne;
+                    this.type = this.type === 'cmp-one'? 'cmp-two' : 'cmp-one'
+                }
+            } 
+        })   
+    </script>
+</body>
+</html>

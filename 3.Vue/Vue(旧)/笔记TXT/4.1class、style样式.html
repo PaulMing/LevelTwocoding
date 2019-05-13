@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .shape{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+        }
+        .circle{
+            border-radius: 50%;
+        }
+        .blue{
+            background-color: blue;
+        }
+        .red{
+            background-color: red;
+        }
+        .yellow{
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <div id="app">
+        <!-- Vue添加样式：class、style -->
+        <!-- class样式 -->
+        <!-- 第一种形式：对象中属性为类名，属性值为true/false -->
+        <div class="shape" @click="isCircle = !isCircle" :class="{circle: isCircle, blue: isCircle}"></div>
+        <!-- 第二种形式：巧妙利用函数或者计算属性函数 -->
+        <div class="shape" @click="isCircle = !isCircle" :class="divClass"></div>
+        <!-- 第三种形式：数组形式 -->
+        <div class="shape" @click="isCircle = !isCircle" :class="color"></div>
+        <div class="shape" @click="isCircle = !isCircle" :class="[color,{circle: isCircle}]"></div>
+        <input type="text" v-model="color">
+        <p>{{isCircle}}</p>
+
+
+        <!-- 补充：对象中属性若出现background-color,其有两种写法：1.属性加双引号; 2.属性写成小驼峰形式 -->
+        <!-- 注意单双引号:其也不会报错，但是没效果 -->
+        <div class="shape" :style="{backgroundColor: color, width: width+'px'}"></div>
+        <div class="shape" :style="divStyle"></div>
+        <div class="shape" :style="[divStyle,{height: height+'px'}]"></div>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                isCircle: false,
+                // 补充：此种方式要比写成函数简洁些，但其有bug -> data对象中的属性不能使用data中已经存在的属性，其是获取不到的，涉及vue底层绑定数据的原理，其确实是获取不到数据
+                // divClass: {
+                //     circle: this.isCircle,
+                //     blue: !this.isCircle
+                // },
+                color: "blue",
+                width: 300,
+                height: 100
+            },
+            computed: {
+                divClass: function(){
+                    return {
+                        circle: this.isCircle,
+                        blue: !this.isCircle
+                    }
+                },
+                divStyle: function(){
+                    return {
+                        background: tis.color,
+                        width: this.width + 'px',
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

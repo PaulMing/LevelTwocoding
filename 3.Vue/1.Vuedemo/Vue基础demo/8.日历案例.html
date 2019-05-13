@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .calender{
+            width: 500px;
+            margin-left: 50px;
+            border: 1px solid #ccc;
+        }
+        .date-header{
+            width: 100%;
+            display: flex;
+            line-height: 30px;
+        }
+        .calleft,
+        .calright{
+            border: 15px solid transparent;
+            width: 0;
+            height: 0;
+            cursor: pointer;
+        }
+        .calleft{
+            border-right-color: #007fff;
+        }
+        .calright{
+            border-left-color: #007fff;
+        }
+        .calmiddle{
+            flex: 1;
+            text-align: center;
+            color: #007fff;
+        }
+        .date-content{
+            width: 100%;
+        }
+        .date-content .week-header{
+            display: flex;
+            background-color: #007fff;
+        }
+        .date-content .week-header div{
+            flex: 1;
+            text-align: center;
+            line-height: 30px;
+            color: #fff;
+            font-weight: 600;    
+        }
+        .week-day {
+            width: 100%;
+        }
+        .every-day {
+            display: inline-block;
+            width: 14.28%;
+            line-height: 50px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .other-day {
+            color: #ccc;
+        }
+        .now-day {
+            background-color: #007fff;
+            color: #fff;
+            font-weight: 600;
+        }
+        .active-day:not(.now-day) {
+            color: #007fff;
+            border: 2px solid #007fff;
+            line-height: 46px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="calender">
+            <div class="date-header">
+                <div class="calleft" @click="handlePrev"></div>
+                <div class="calmiddle">{{year}}年{{month}}月{{day}}日</div>
+                <div class="calright" @click="handleNext"></div>
+            </div>
+            <div class="date-content">
+                <div class="week-header">
+                    <div v-for="item in weekHeader">{{item}}</div>
+                </div>
+                <div class="week-day">
+                    <div class="every-day" v-for="item in 42">
+                        <div v-if="item - beginDay > 0 && item - beginDay <= curDays"
+                            :class="{
+                                'now-day': `${year}-${month}-${item - beginDay}` === curDate,
+                                'active-day': `${year}-${month}-${item - beginDay}` === `${year}-${month}-${day}`
+                            }"
+                            :data-day="item - beginDay"
+                            @click="handleChooseDay"
+                        >
+                        {{ item - beginDay }}
+                        </div>
+                        <div v-else-if="item - beginDay <= 0" class="other-day">{{ prevDays - beginDay + item}}</div>
+                        <div v-else class="other-day">{{ item - beginDay - curDays }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                // year: new Date().getFullYear(),
+                // month: new Date().getMonth() + 1,
+                // day: new Date().getDate()
+                year: null,
+                month: null,
+                day: null,
+                weekHeader:['日','一','二','三','四','五','六'],
+                curDate: null,
+                activeDay: null
+            },
+            created(){
+                this.getInitDate();
+            },
+            methods: {
+                getInitDate(){
+                    const date = new Date();
+                    this.year = date.getFullYear();
+                    this.month = new Date().getMonth() + 1;
+                    this.day = new Date().getDate();
+                    this.curDate = `${this.year}-${this.month}-${this.day}`;    
+                },
+                handlePrev () {
+                    if(this.month === 1) {
+                        this.month = 12;
+                        this.year --;
+                    } else {
+                        this.month --;
+                    }
+                },
+                handleNext () {
+                    if(this.month === 12) {
+                        this.month = 1;
+                        this.year ++;
+                    } else {
+                        this.month ++;
+                    }
+                },
+                handleChooseDay (e) {
+                    this.day = e.target.dataset.day;
+                }
+            },
+            computed: {
+                beginDay () {
+                    return new Date(this.year, this.month - 1, 1).getDay();
+                },
+                curDays () {
+                    return new Date(this.year, this.month, 0).getDate();
+                },
+                prevDays () {
+                    return new Date(this.year, this.month - 1, 0).getDate();
+                }
+            }
+        })   
+    </script>
+</body>
+</html>

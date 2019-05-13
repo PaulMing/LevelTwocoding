@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        p{
+            width: 200px;
+            height: 100px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <div id="app">
+        <!-- v-on指令 -->
+        <!-- 直接写事件名称即可 -->
+        <input type="text" v-on:input="changeName">
+        <!-- 其写成函数执行的形式也是OK的，函数执行的形式其可传入参数，系统默认将事件对象传入该函数的首个参数，若是手动更改，vue中需要将事件对象写成$event，这样才可以对应 -->
+        <input type="text" v-on:input="changeName()">
+        <button v-on:click="increase(20,$event)">click</button>
+        <!-- 补充：其也可直接写成表达式 -->
+        <button v-on:click="count++">click</button>
+
+        <!-- 修饰符：事件修饰符、按键修饰符、系统修饰符、鼠标按钮修饰符 -->
+        <!-- 事件修饰符：.stop:阻止事件冒泡； .prevent:阻止事件默认行为 -->
+        <p v-on:mousemove="updataXY">
+            {{x}}--{{y}}
+            <!-- 常规方法 -->
+            <span v-on:mousemove="stop">停止</span>
+            <!-- 事件修饰符.stop阻止冒泡 -->
+            <span v-on:mousemove.stop>停止</span>
+            <!-- 事件修饰符.prevent阻止事件默认行为 -->
+            <a href="https://www.baidu.com" v-on:click.prevent>baidu</a>
+        </p>
+
+        <!-- 按键修饰符：.enter:回车； .space:空格 -->
+        <!-- 修饰符可以连着使用：回车、空格时候触发 -->
+        <input type="text" v-on:keyup.enter.space="input">
+        <!-- 键盘事件使用键值也OK -->
+        <input type="text" v-on:keyup.13.space="input">
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                name: '',
+                count: 0,
+                x: 0,
+                y: 0,
+            },
+            methods: {
+                changeName: function(e){
+                    this.name = e.target.value;
+                },
+                increase: function(step,e){
+                    // this.count ++;
+                    console.log(e);
+                    this.count += step;
+                },
+                updataXY: function(e){
+                    this.x = e.clientX;
+                    this.y = e.clientY;
+                },
+                stop: function(e){
+                    // e.stopPropagation();
+                },
+                input: function(e){
+                    alert('input');
+                }
+            }
+        }) 
+    </script>
+</body>
+</html>

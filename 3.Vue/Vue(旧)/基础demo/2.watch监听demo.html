@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click = "value+=5">加5</button>
+        <button @click = "value+=1">加1</button>
+        <p>{{ result }}</p>
+        <p>{{ value }}</p>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                value: 0
+            },
+            computed: {
+                result: function(){
+                    return this.value > 52 ? '大于52' : '还没有'
+                }
+            },
+            watch: {
+                result: function(){
+                    var vm = this
+                    setTimeout(function(){
+                        vm.value = 0
+                    },2000)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .demo{
+            width: 300px;
+            border: 1px solid #000;
+            padding: 20px;
+            margin: 100px auto;
+        }
+        input{
+            width: 280px;
+            height: 25px;
+        }
+        ul li{
+            width: 100px;
+            margin: 10px;
+            display: flex;
+        }
+        ul li button{
+            margin-left: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo">
+        <input type="text">
+        <ul>
+            <!-- <li>
+                <span>111@qq.com</span>
+                <button>delete</button>
+            </li> -->
+        </ul>
+    </div>  
+    <script>
+        var oInput = document.getElementsByTagName("input")[0];
+        var oUl = document.getElementsByTagName("ul")[0];
+        
+        oInput.oninput = function(){
+            var span = document.createElement('span');
+            var button = document.createElement('button');
+            var li = document.createElement('li');
+            
+           span.innerHTML = this.value;
+           li.appendClild(span);
+           li.appendClild(button)
+           oUl.appendChild(li);
+        }
+    
+    
+    </script>
+</body>
+</html>

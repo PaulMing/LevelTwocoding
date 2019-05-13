@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>{{name}}</div>
+        <p>{{age}}</p>
+        <p>{{type}}</p>
+        <div>{{describle()}}</div>
+        <div>{{ change }}</div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script>
+        /*
+          1.data中数据改变，视图数据也自动随之改变 -> 原生数据改变需要调用页面渲染函数重新渲染
+          2.视图数据只要改变(不管该数据是否与methods中方法的属性有无关系)，methods中的方法都会执行,前提视图层使用了该方法 -> 也算bug
+          3.watch:{};//监听属性
+          4.computed:{};//计算属性,视图数据中计算属性涉及到的属性改变时才会触发，否则不会触发 -> 相比于函数完善
+          // 使用方法：其会自动调用change(); <div>{{ change }}</div>
+        */ 
+        var app = new Vue({
+            el: '#app',
+            data: {
+                name: 'skrke',
+                age: 18,
+                type: 'small'
+            },
+            methods: {
+                describle(){
+                    console.log(1);
+                    console.log(this.age);
+                }
+            },
+            watch: {
+                // name属性改变便会触发该方法
+                name(){
+                    console.log('changename');
+                }
+            },
+            computed: {
+                // 第一种写法
+                // change(){
+                //     console.log(1);
+                //     return this.name + this.age;
+                // },
+                // 第二种写法:对象形式 -> get();执行时触发; set();设置change值的时候触发 app.change = "xxx"; set(value);参数value表示的便是xxx
+                change: {
+                    get() {
+                        console.log(2);
+                        return this.name + this.age;
+                    },
+                    set(value){
+                        console.log(3);
+                        console.log(value);
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

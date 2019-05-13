@@ -1,0 +1,9 @@
+
+调用渡一后台接口：若使用自己的appkey,必须先填写自己的数据，后台给每个人都是独立的接口，保证数据不污染，可以直接使用teacher的；
+
+
+渡一后端接口平台http://api.duyiedu.com/management/index
+      PaulMing
+      账号：1969094024@qq.com
+      密码：18234187791
+

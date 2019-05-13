@@ -1,0 +1,84 @@
+<view class="wrapper">
+    <view class="top-container">
+      <text class="top-date">一月五日</text>
+      <text class="top-article">你是爱，是暖，是希望，你是人间的四月天！</text>
+      <image src="../../image/list/article/4.png"></image>
+    </view>
+    <view class="select-container">
+      <text class="first">+</text>
+      <text>男性穿搭</text>
+      <text>女性穿搭</text>
+      <text>心理</text>
+      <text>深度阅读</text>
+      <text>人生整理术</text>
+      <text>读书</text>
+      <text>日韩剧</text>
+      <text>吃喝攻略</text>
+      <text>...</text>
+    </view>
+    <!-- 内容区 -->
+    <view class="main-container">
+      <view class="first-main">
+        <view class="article-top">
+          <image src="../../image/avatar.png"></image>
+          <text>neffify</text>
+          <text>等</text>
+          <text>69</text>
+          <text>人马克了</text>
+        </view>
+        <image class="article-pic" src="../../image/list/article/1.png"></image>
+        <view class="article-des"><text>不伦之陶？《吻》背后令人惊讶的往事</text></view> 
+        <view class="article-bottom">
+         <text>深度阅读</text>
+         <view class="handle"> 
+            <image src="../../image/icon/icon_more.png"></image>
+            <image src="../../image/icon/icon_relay.png"></image>
+            <image src="../../image/icon/icon_circle_fill.png"></image>
+         </view>
+        </view>
+      </view>
+      <view class="first-main">
+        <view class="article-top">
+          <image src="../../image/list/article/3.png"></image>
+          <text>maryk</text>
+          <text>等</text>
+          <text>96</text>
+          <text>人马克了</text>
+        </view>
+        <image class="article-pic" src="../../image/list/article/1.png"></image>
+        <view class="article-des"><text>不伦之陶？《吻》背后令人惊讶的往事</text></view> 
+        <view class="article-bottom">
+         <text>深度阅读</text>
+         <view class="handle"> 
+            <image src="../../image/icon/icon_more.png"></image>
+            <image src="../../image/icon/icon_relay.png"></image>
+            <image src="../../image/icon/icon_circle_fill.png"></image>
+         </view>
+        </view>
+      </view>
+      <view class="first-main">
+        <view class="article-top">
+          <image src="../../image/list/article/6.png"></image>
+          <text>karly</text>
+          <text>等</text>
+          <text>116</text>
+          <text>人马克了</text>
+        </view>
+        <image class="article-pic" src="../../image/list/article/1.png"></image>
+        <view class="article-des"><text>不伦之陶？《吻》背后令人惊讶的往事</text></view> 
+        <view class="article-bottom">
+         <text>深度阅读</text>
+         <view class="handle"> 
+            <image src="../../image/icon/icon_more.png"></image>
+            <image src="../../image/icon/icon_relay.png"></image>
+            <image src="../../image/icon/icon_circle_fill.png"></image>
+         </view>
+        </view>
+      </view>
+    </view>
+
+
+  
+
+</view>
+

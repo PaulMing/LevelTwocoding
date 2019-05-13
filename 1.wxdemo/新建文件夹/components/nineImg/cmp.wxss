@@ -1,0 +1,34 @@
+/* components/nineImg/cmp.wxss */
+.container{
+  width: 700rpx;
+}
+.container .image-content{
+  position: relative;
+  width: 100%;
+  height: 700rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.container .image-content .image{
+  width: 32%;
+  height: 32%;
+}
+.container .image-content .img-num{
+  position: absolute;
+  right: 80rpx;
+  bottom: 80rpx;
+  padding: 10rpx; 
+  color: #fff;
+  background-color: rgba(0,0,0,.7);
+}
+
+
+
+
+.container .mainTitle text{
+  padding: 0 30rpx;
+  font-size: 40rpx;
+  font-weight: 400;
+  letter-spacing: 2rpx;
+}

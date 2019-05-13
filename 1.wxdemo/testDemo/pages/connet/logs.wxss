@@ -1,0 +1,25 @@
+/* pages/connet/logs.wxss */
+
+.container{
+    padding: 0 10rpx;
+}
+.pic-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.pic-box image{
+    width: 730rpx;
+}
+.pic-box .title{
+    font-size: 32rpx;
+    letter-spacing: 4rpx;
+    line-height: 45rpx;
+}
+
+.titleAuthor{
+  text-align: right;
+  font-size: 32rpx;
+  padding-right: 5rpx;
+}
+

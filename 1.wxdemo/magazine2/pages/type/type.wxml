@@ -1,0 +1,36 @@
+<!-- 头部内容区 -->
+<view class="top-container">
+  <image src="{{titleInfo.imgSrc}}"></image>
+  <view class="contain-flex">
+    <view class="top"><text>{{titleInfo.title}}</text></view>
+    <view class="bottom">
+      <view><button open-type="share" class="butn"><image src="../../image/icon/icon_relay.png"></image></button></view>
+      <view><image bindtap="onMoreTap" data-articleType="{{item.articleType}}" src="../../image/icon/icon_more.png"></image></view>   
+    </view> 
+  </view>
+</view>
+<!-- 中间内容区 -->
+<view class="main-container">
+  <view class="first-main" wx:for="{{articleList}}" wx:key="id" >
+    <view class="article-top">
+      <image src="{{item.markPeopleAvatar}}"></image>
+      <text>{{item.markPeople}}</text>
+      <text>等</text>
+      <text>{{item.markCount}}</text>
+      <text>人马克了</text>
+    </view>
+    <view class="article-pic" bindtap="onTap" data-articleId="{{item.id}}"><image src="{{item.articleImgSrc}}"></image></view>
+    <view class="article-des"  bindtap="onTap" data-articleId="{{item.id}}"><text>{{item.articleTitle}}</text></view> 
+    <view class="article-bottom">
+      <text id="textTime">{{item.publishTime}}</text>
+      <view class="handle"> 
+        <view class="viefirst"><image bindtap="onMoreTap" data-articleType="{{item.articleType}}" src="../../image/icon/icon_more.png"></image></view>
+        <view><button open-type="share" class="butn"><image src="../../image/icon/icon_relay.png"></image></button></view>
+        <view>
+          <image bindtap="onLikeTap" wx:if="{{listLike[index]}}" data-articleIndex="{{index}}" src="../../image/icon/icon_circle_fill.png"></image>
+          <image bindtap="onLikeTap" data-articleIndex="{{index}}" wx:else src="../../image/icon/icon_circle.png"></image>
+        </view>  
+      </view>
+    </view>
+  </view>
+</view>

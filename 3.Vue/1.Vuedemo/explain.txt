@@ -1,0 +1,11 @@
+
+1、Vue基础demo：使用script标签cdn完成Vue基础学习
+
+2、VueDemo中：使用脚手架
+
+    (1).vue-app 基础文件的学习
+    (2).vue-app1 路由、vuex的练习 -> E:\全栈记\fstackdemo\进阶\3.Vuedemo\VueDemo\vue-app1\src\components\student下的AddStudent.vue、StudentList.vue是没有使用vuex的， AddStudent1.vue与StudentList1.vue使用了vuex,   可以手动调节路由配置进行测试；-> 复习首选，有注释
+
+    (3).vue-app2中测试vuex的基础使用
+    (4).vue-app3 vuex完整项目
+    (5).vue-app4 测试项目

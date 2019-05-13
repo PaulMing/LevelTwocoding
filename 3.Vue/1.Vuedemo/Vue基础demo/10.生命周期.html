@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">{{msg}}</div>
+    <button @click="changeMsg">click</button>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script>
+        // 必须new Vue();才能开启vue声明周期函数，否则谈不上
+        // vue生命周期聚焦点：某个时刻触发
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hellovue'
+            },
+            methods: {
+                test(){
+                   console.log('test'); 
+                },
+                changeMsg(){
+                    this.msg = 'hellojs';
+                    console.log(1);
+                }
+            },
+            // 事件、data进行初始化的时候 -> 事件、data数据什么都没有的时候触发
+            beforeCreate(){
+                console.log('---beforeCreate---');
+                console.log(this.msg);
+                // console.log(test());//报错
+                alert('beforeCreate');
+            },
+            // 事件、data数据初始化完成后触发
+            created(){
+                console.log('---created---');
+                this.test();
+                this.changeMsg();
+                alert('created');
+            },
+            // template模版、render(); el's outerHTML; 替换HTML模版生成真实dom元素前触发,即渲染到页面前触发 -> 最终渲染到页面上的必然是真实dom元素，否则浏览器并不能成功解析
+            beforeMount(){
+                alert('beforemount');
+            },
+            // 渲染页面前一刻触发，然后数据才会渲染到页面上
+            mounted(){
+                alert('mount');
+            },
+            // 数据变化/更新前触发
+            beforeUpdate() {
+                alert('beforeUpdate');
+            },
+            // 数据变化/更新后触发，然后数据才会渲染到页面上
+            updated() {
+                alert('updated');
+            },
+            // vue实例销毁前 -> 调用vm.$destroy();销毁vue实例(彻底销毁，不存在了)
+            beforeDestroy() {
+                alert('beforeDestroy');
+            },
+            // vue实例销毁前一刻触发
+            destroyed() {
+                alert('destroyed');
+            }
+        })  
+    </script>
+</body>
+</html>

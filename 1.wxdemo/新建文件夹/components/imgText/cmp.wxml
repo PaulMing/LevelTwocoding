@@ -1,0 +1,9 @@
+<view class="container">
+  <view class="text-container">
+    <view class="mainTitle">{{mainTitle}}</view>
+    <view class="subHead">{{subHead}}</view>
+  </view>
+  <view>
+    <image class="image" src="{{imgSrc}}"></image>
+  </view>
+</view>

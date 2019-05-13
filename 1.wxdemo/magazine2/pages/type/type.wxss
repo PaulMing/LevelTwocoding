@@ -1,0 +1,64 @@
+/* 使用@import导入css样式 ->必须使用相对路径，而且末尾加分号，否则报错 */
+@import "../common-list.wxss";
+/* 头部内容区 */
+.top-container{
+  position: relative;
+}
+.top-container image{
+  width: 100%;
+}
+.top-container .contain-flex{
+  position: absolute;
+  left: 46rpx;
+  top: 385rpx;
+  background-color: #fff;
+  width: 86%;
+  height: 170rpx;
+}
+.top-container .contain-flex .top{
+  padding: 18rpx 0 18rpx 15rpx;
+}
+.top-container .contain-flex .top text{
+  font-size: 46rpx;
+}
+.top-container .contain-flex .bottom{
+  padding-right: 20rpx;
+  float: right;
+  display: flex;
+}
+.top-container .contain-flex .bottom view .butn{
+  position: relative;
+  bottom: 8rpx;
+  left: 5rpx;
+  background: transparent;
+}
+.top-container .contain-flex .bottom view .butn::after {
+  border: none;
+}
+.top-container .contain-flex .bottom view image{
+  width: 50rpx;
+  height: 50rpx;
+}
+
+
+
+
+#textTime{
+  border: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

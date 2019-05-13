@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <div id="app">
+        <my-component></my-component>
+        <my-kol></my-kol>
+    </div>
+    <my-component></my-component>
+    <script>
+        // 组件命名规范：自己名字简写or其它 + 组件名字 -> 防止组件覆盖、命名冲突
+
+        // 全局组件：任何vue实例都可以复用
+        // 全局组件中data属性值必须写为方法的形式，否则报错 -> 底层原因：若是直接写为对象，所有组件都使用同一个对象，其中一个组件改变name值便会对其它组件中的name值产生影响，若是写成函数，每次都return一个新对象，便可以解决此问题
+        Vue.component('my-component',{
+            template: '<div>{{name}}</div>',
+            data: function(){
+                return {
+                    name: "huahua"
+                }
+            }
+        })
+        new Vue({
+            el: "#app",
+            // 局部组件：仅限于此Vue实例中使用
+            component: {
+                // 组件名：配置项
+                'my-kol': {
+                    template: "<div>{{name}}</div>",
+                    data: function(){
+                        return {
+                            name: "paul"
+                        }
+                    }
+                }
+            }
+        })
+        new Vue({
+            el: "#skl",
+            data: {
+            },
+            component:{
+                "my-kol1": {
+                    template: "<div>123</div>"
+                }
+            }
+        })        
+    </script>
+</body>
+</html>

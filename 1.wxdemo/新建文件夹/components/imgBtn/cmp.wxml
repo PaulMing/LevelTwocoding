@@ -1,0 +1,5 @@
+<!-- plain:按钮是否镂空，背景色是否透明 -->
+<button class="container" plain="true" open-type="{{openType}}" bindgetuserinfo="onGetUserInfo">
+  <!-- slot插槽 -->
+  <slot name="img"></slot>
+</button>

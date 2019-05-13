@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生列表</title>
+    <script src="/bootstrap/js/jquery-3.3.1.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css" />
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script>
+        window.onload = function() {
+            $('#table').bootstrapTable({
+                url: '/getStudentPage',
+                striped: true,
+                pageSize: 5,
+                pageList: [5, 10, 20],
+                pageNumber: 1,
+                pagination:true,
+                sidePagination:'server',
+                columns: [{
+                    field: 'id',
+                    title: '学生id'
+                }, {
+                    field: 'name',
+                    title: '姓名'
+                }, {
+                    field: 'sex',
+                    title: '性别'
+                }, {
+                    field: 'birth',
+                    title: '生日'
+                }, {
+                    field: 'ctime',
+                    title: '创建时间'
+                }, ]
+            });
+        }
+    </script>
+</head>
+<body>
+<table id="table">
+</table>
+</body>
+</html>

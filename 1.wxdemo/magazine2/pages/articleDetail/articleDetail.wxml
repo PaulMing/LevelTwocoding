@@ -1,0 +1,121 @@
+<!-- wxs外联式引入 -->
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+<wxs module="format" src="../../utils/format.wxs"></wxs>
+<view class="wrapper">
+  <!-- 头部标题区 -->
+  <view class="top-container">
+    <text>{{articleDetail.title}}</text>
+  </view>
+  <!-- 作者、时间 -->
+  <view class="date-container">
+    <text>{{articleDetail.author}}</text>
+    <text>{{articleDetail.publishTime}}</text>
+  </view>
+  <!-- 中间内容区 -->
+  <view class="media-container">
+    <!-- 轮播图 -->
+    <swiper wx:if="{{articleDetail.banner[0]}}" class="media-swiper" indicator-dots='true' autoplay="true" interval="3000" circular="true">
+      <swiper-item wx:for="{{articleDetail.banner}}" wx:key="id">
+        <image src="{{item}}"></image>
+      </swiper-item>
+    </swiper>
+    <!-- 视频 -->
+    <video wx:elif="{{articleDetail.video.src}}"  id="myvideo" class="media-video" src="{{articleDetail.video.src}}" danmu-list="{{danmuList}}" danmu-btn="true" enable-danmu="true" page-gesture="true" >
+      <cover-view class="controls" wx:if="{{videoCoverHidden}}">
+        <cover-image src="{{articleDetail.video.poster}}"></cover-image>
+        <cover-view class="controls-box" bindtap="onMoveTap">
+          <cover-image src="/image/icon/Icon_start.png"></cover-image>
+          <cover-view>{{articleDetail.video.duration}}</cover-view>
+        </cover-view>     
+      </cover-view>  
+    </video>
+    <!-- 音频 -->
+    <view class="media-audio" wx:elif="{{articleDetail.audio.src}}" >
+      <view class="audio-play">
+        <image bindtap="onAudioPlayTap" wx:if="{{playing}}" src="../../image/icon/Icon_audio_pause.png"> </image>
+        <image bindtap="onAudioPlayTap" wx:else src="../../image/icon/Icon_audio_start.png"></image>
+      </view>
+      <view class="audio-connect">
+        <view class="singname"><text>{{articleDetail.audio.audioTitle}}</text></view>
+        <view class="singer"><text>{{articleDetail.audio.from}}</text></view>
+        <view class="audprogress">
+          <progress percent="{{progressPercent}}" stroke-width="2" style="width:{{progressWidth+'rpx'}}"></progress>
+          <view bind:touchstart="onAudioCircleStart"
+                bind:touchmove="onAudioCircleMove" 
+                class="progress-cricle" 
+                style="left:{{progressCircleLeft+'rpx'}}"></view>
+        </view>
+        <view class="audtime">
+          <text>{{format(audioCurTime)}}</text>
+          <text>{{format(articleDetail.audio.duration)}}</text>
+        </view>
+      </view>
+    </view> 
+  </view>
+  <!-- 中间内容(文章区)  -->
+  <view class="article-container">
+    <text decode="{{true}}">{{filter(articleDetail.content)}}</text>
+  </view>
+  <!-- 底部 -->
+  <view class="bottom-container">
+    <text>阅读</text>
+    <text>{{articleDetail.readNum}}</text>
+  </view>
+</view>
+
+
+
+
+
+
+
+
+
+
+<!-- wxs语法介绍 -->
+<!-- 页面嵌入式 -->
+<!-- 
+<wxs module="count">
+  var a = function(n){
+    return n + 1;
+  }
+  module.exports = a
+</wxs> 
+<view>{{count(3)}}</view>
+-->
+<!-- wxs外联式引入 -->
+<!-- <wxs module="filter" src="../../utils/filter.wxs"></wxs> -->
+
+<!-- 使用wxs语法：使用&nbsp替换\n，制造空格 -->
+<!-- 
+<wxs module="filter">
+  var filter = function(text){
+    if(!text){
+      return
+    }
+    var reg = getRegExp('\\n','g');
+    return text.replace(reg,'\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+  }
+  module.exports = filter;
+</wxs> -->
+
+<!-- 使用wxs语法：将毫秒转换为00:00 -->
+<!-- <wxs module="format">
+// 将毫秒转换为 00:00
+  var format = function(sec){
+    var minute = Math.floor(sec/60);
+    var second = sec % 60;
+    minute = minute < 10 ? '0' + minute : minute;
+    second = second < 10 ? '0' + second : second;
+    return minute + ":" + second;
+  }
+  module.exports = format;
+</wxs> -->
+
+
+
+
+
+
+
+

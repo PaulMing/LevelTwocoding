@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <div id="app">
+        <p>{{count}}</p>
+        <button v-on:click="increase">加一</button>
+        <button v-on:click="decrease">减一</button>
+        <button v-on:click="count1++">count1</button>
+        <p>{{result()}}</p>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                count: 0,
+                count1: 1,
+            },
+            // watch监听
+            watch: {
+                // 监听的属性:属性变化执行的函数,函数参数:属性变化后的值
+                count: function(val){
+                    console.log(val);
+                    var _self = this;
+                    window.setTimeout(function(){
+                        _self.count = 0;
+                    },2000)
+                }
+            },
+            methods: {
+                result: function(){
+                    console.log("result");
+                    return this.count > 5 ? "大于5": "小于5"
+                },
+                increase: function(){
+                    this.count++;  
+                },
+                decrease: function(){
+                    this.count--;       
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <div id="app">
+
+    </div>
+    <!-- Vue模版：html模版、template模版、render函数 -->
+    <script>
+        new Vue({
+            el: "#app",
+            /*
+             template模版：
+             1.其会直接覆盖掉html模版
+             2.其只能有一个祖先，不能出现兄弟节点
+            */
+            template: "<div>{{name}}<div>",
+            template: "<div>{{name}}</div><div>123</div>",//报错，其只能有一个祖先
+            template: "<div>{{name}}<div>123</div></div>",
+            data: {
+                name: "paul"
+            },
+        })
+    </script>
+</body>
+</html> 

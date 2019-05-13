@@ -1,0 +1,57 @@
+/* components/article/cmp.wxss */
+
+.container{
+  background-color: #fff;
+
+}
+.container .mark-container{
+  padding: 20rpx;
+}
+.container .mark-container .image{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  margin-right: 25rpx;
+  vertical-align: middle;
+}
+.container .mark-container .text{
+  font-size: 28rpx;
+  color: #666;
+}
+
+.container .control-cntainer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+  margin-top: 10rpx;
+}
+.container .control-cntainer .control-box{
+  display: flex;
+}
+
+.container .control-cntainer .control-box .box{
+  display: block;
+  margin-left: 25rpx;
+}
+
+.container .control-cntainer .control-box .box.img-btn{
+  width: 48rpx;
+  height: 50rpx;
+}
+.container .control-cntainer .control-box .box.img-btn image{
+  width: 50rpx;
+  height: 50rpx;
+  margin-bottom: 10rpx;
+}
+
+
+
+
+
+
+
+
+
+
+

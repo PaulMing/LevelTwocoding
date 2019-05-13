@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- <input type="text" v-bind:value="inputValue" id="oInput" v-on:input="inputd"> -->
+        <input type="text" v-model="inputValue">
+        <div id="oDiv" style="width: 600px; height:300px; border: 2px solid red">{{inputValue}}</div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script>
+        // 使用Vue后 -> 原生不起作用
+        // oInput.oninput = function(e){
+        //     console.log(this.value);
+        //     // console.log(e.target.value);
+        //     oDiv.innerHTML = this.value; 
+        // }
+
+        new Vue({
+            el: '#app',
+            data: {
+                inputValue: '',
+            },
+            methods:{
+                inputd(e){
+                    // console.log(this.value);
+                    // console.log(this);//this是vue实例 -> this.value必然找不到
+                    console.log(e.target.value);
+                    this.inputValue = e.target.value;
+
+                }
+
+            }
+        }) 
+    </script> 
+</body>
+</html>

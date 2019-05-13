@@ -1,0 +1,11 @@
+
+
+.container {
+  background-color: #fff;
+  padding: 25rpx;
+}
+.container .tag{
+  display: inline-block;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+}

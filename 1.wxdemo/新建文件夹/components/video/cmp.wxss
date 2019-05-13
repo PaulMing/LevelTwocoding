@@ -1,0 +1,66 @@
+
+/* page等同于html标签 */
+page{
+  background-color: #eee;
+}
+.container{
+  width: 700rpx;
+}
+.container .video-content{
+  width: 700rpx;
+  height: 400rpx;
+  position: relative;
+}
+.container .video-content .video{
+  width: 700rpx;
+  height: 400rpx;
+}
+.container .video-content .poster{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top:0;
+  left: 0;
+}
+.container .video-content .poster .image{
+  width: 100%;
+  height: 100%;
+}
+.container .video-content .poster .controls{
+   position: absolute;
+   left: 50%;
+   top: 50%;
+   margin-left: -50rpx;
+   margin-top: -50rpx;
+   width: 100rpx;
+   height: 100rpx;
+   background-color: rgba(0,0,0,0.7);
+   border-radius: 50%;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+.container .video-content .poster  .controls .image{
+  margin-top: 15rpx;
+  width: 30rpx;
+  height: 30rpx;
+}
+.container .video-content .poster  .controls .text{
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: #fff;
+}
+
+.container .mainTitle .text{
+  font-size: 40rpx;
+  padding: 20rpx;
+}
+.container .mask{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 750rpx;
+  height: 1334rpx;
+  background-color: rgba(0,0,0,0.6);
+}

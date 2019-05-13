@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <div id="app">
+        <!-- v-if指令 -->
+        <p v-if="items > 60">有库存</p>
+        <p v-else-if="items <= 30 && items>=1">快没货了</p>
+        <p v-else>对不起，已没货</p>
+        <!-- v-if指令的使用若是不存在则“直接干掉”，v-show底层是display:none/block;建议使用v-if -->  
+        <p v-show="show">hellovue</p>
+
+        <!-- template模版的使用：其可减少代码冗余，而且其不会存在于html结构中 -->
+        <template v-if="show">
+          <p>first-p</p>
+          <p>second-p</p>
+        </template>
+        <button @click="show = !show">click</button>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                items: 10,
+                show: true
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <div id="app">
+        <p>{{count}}</p>
+        <button v-on:click="increase">加一</button>
+        <button v-on:click="decrease">减一</button>
+        <button v-on:click="count1++">count1</button>
+        <p>{{result()}}</p>
+        <!-- button按钮每次点击count值改变，其就会重新渲染HTML模版，所有的元素都会重新渲染，即使点击count1改变的是count1的值，整个HTML模版也会重新渲染，result函数还是会执行，很耗费性能，于是有了计算属性 -->
+        <!-- 
+            计算属性：
+            1.其的函数在HTML模版中直接写即可，不用写成函数执行的形式;(底层其和methods中的函数写法相同)
+            2.其会监听函数中相关变量是否改变，若是改变，其才会执行，很节省性能
+         -->
+        <p>{{output}}</p>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                count: 0,
+                count1: 1,
+            },
+            computed: {
+                output: function(){
+                    console.log("output");
+                    return this.count >5 ? "大于5": "小于5"
+                }
+            },
+            methods: {
+                result: function(){
+                    console.log("result");
+                    return this.count > 5 ? "大于5": "小于5"
+                },
+                increase: function(){
+                    this.count++;  
+                },
+                decrease: function(){
+                    this.count--;       
+                }
+            }
+        })
+    </script>
+</body>
+</html>

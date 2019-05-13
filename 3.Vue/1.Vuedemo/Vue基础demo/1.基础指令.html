@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        1.插值语法中可进行简单的四则、三目运算，语句不行
+        2.特性使用的时候必须使用v-bind进行绑定，而且不用写{{}}; 微信小程序直接写就OK
+        3.事件中使用v-on:click = "xx()";//绑定函数名或函数执行形式都OK，函数执行形式可传入参数 -> 微信中bindtap;catchtap;
+        // 简写：v-on:click -> @click; v-bind:href -> :href
+        5.{{}}会将所有的都解析为普通文本，为了识别标签，可使用v-html,v-test,等同于innerHTML,innerText;
+        6.{{}}插值语法中可写函数执行，但是函数名不要与data中的数据名重复，否则会报错，系统会首先到data中查找，如果查找到的是字符串，字符串();必然报错
+     -->
+    <div id="app">
+        {{age > 20 ? true : false}}
+        <!-- <a href="{{url}}"></a> -->
+        <a v-bind:href="url"></a>
+       
+        <button v-on:click="changeAge">click</button>
+        <div>{{tag}}</div>
+        <div v-html="tag"></div>
+        <div>{{describle()}}</div>
+    </div>
+    <!-- 其只能绑定首个，并不会覆盖 -->
+    <!-- 
+        <div id="app">
+            <button v-on:click="changeAge">click</button>
+        </div> 
+    -->
+    <!-- 
+        <div class="app">{{age > 20 ? true : false}}</div>
+        <div class="app">
+                <button v-on:click="changeAge">click</button>
+        </div> 
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                age: 21,
+                url: 'http://www.baidu.com',
+                tag: '<span>测试是否解析标签</span>',
+                describled: 'nameskr'
+            },
+            methods: {
+               changeAge(){
+                   console.log(this.age);
+               },
+               describle: function(){
+                   return this.age + 20;
+               }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 观察者模式/发布订阅模式：当一个对象的状态发生改变时，所有依赖于它的对象都将得到通知
+        // Vue源码中有该思想的体现
+
+        // 事件机制便是一种观察者模式(例如绑定多个事件addEventListener,JS引擎处理便是发布订阅模式)
+        // 实现一个Event模块，发布消息，订阅消息，退订消息
+
+
+
+        // Event 
+        // 1. Event on emmit remove once
+        // 2. 有助于了解 观察者模式 
+        // 3. node 
+
+        // function Event () {
+        //     // 存储 不同事件类型对应的不同处理函数
+        //     this.cache = {};
+        // }
+
+        // Event.prototype.on = function (type, handle) {
+        //     if (!this.cache[type]) {
+        //         this.cache[type] = [handle];
+        //     }else {
+        //         this.cache[type].push(handle);
+        //     }
+        // }
+
+        // Event.prototype.emmit = function () {
+        //     var type = arguments[0];
+        //     var arg = [].slice.call(arguments, 1);
+        //     for (var i = 0; i < this.cache[type].length; i++) {
+        //         this.cache[type][i].apply(this, arg);
+        //     }
+        // }
+
+        // Event.prototype.empty = function (type) {
+        //     this.cache[type] = [];
+        // }
+        
+        // Event.prototype.remove = function (type, handle) {
+        //     this.cache[type] = this.cache[type].filter(function (ele) {
+        //         return ele != handle;
+        //     })
+        // }
+
+        // Event.prototype.once = function (type, handle) {
+
+        // }
+
+        // var oE = new Event();
+        // function deal1(time) {
+        //     console.log('overtime1:' + time);
+        // }
+        // oE.on('over', deal1);
+        // function deal2(time) {
+        //     console.log('overtime2:' + time);
+        // }
+        // oE.on('over', deal2);
+
+        // oE.emmit('over', '2018-9-25');
+
+        // oE.remove('over', deal2);
+
+        // oE.emmit('over', 'second-2018-9-25');
+
+
+        // var oAp1 = PlaneFactory.create('AttackPlane', 10, 20);
+        // var oAp2 = PlaneFactory.create('AttackPlane', 20, 70);
+
+        // var oSp = PlaneFactory.create('SmallPlane', 20, 30);
+        // var oBp = PlaneFactory.create('BigPlane', 30, 40);
+
+
+        // 装饰者模式
+        // oAp1.decorate('eatOneLife');
+        // oAp1.decorate('eatTwoLife');
+        // oAp1.remove('eatOneLife');   
+        
+    </script>
+</body>
+</html>

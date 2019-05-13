@@ -1,0 +1,9 @@
+// 处理文本
+var filter = function (text) {
+  if (!text) {
+    return
+  }
+  var reg = getRegExp('\\n', 'g');
+  return text.replace(reg, '\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+}
+module.exports = filter;

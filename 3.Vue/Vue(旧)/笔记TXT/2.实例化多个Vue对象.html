@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <div id="app">
+        <div>{{name}}</div>
+        <button @click="changeNameone">one-click</button>
+    </div>
+    <div id="demo">
+        <div>{{name}}</div>
+        <button @click="changeNametwo">two-click</button>
+    </div>
+    <script>
+        var one = new Vue({
+            el: "#app",
+            data: {
+                name: "huahua"
+            },
+            methods: {
+                changeNameone: function(){
+                    // this.name = 123;
+                    two.name = "superman"
+                }
+            }
+        })
+        var two = new Vue({
+            el: "#demo",
+            data: {
+                name: "tutu"
+            },
+            methods: {
+                changeNametwo: function(){
+                    // this.name = 345;
+                    one.name = "改变name"
+                }
+
+            }
+        })
+    </script>
+</body>
+</html>

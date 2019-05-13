@@ -1,0 +1,3 @@
+<!--components/tag/cmp.wxml-->
+
+<view class="container" bindtap="onTap">{{tag}}</view>

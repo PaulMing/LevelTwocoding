@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            // el: '#app',
+            data: {
+                msg: 'hellovue',
+                name: 'skr'
+            },
+            template: '<div>{{name}}</div>',
+            // createElement为别名，可更换
+            render(createElement){
+                // console.log(createElement('div'));//VNode{}
+                return createElement('p',{
+                    style: {
+                        color: 'red',
+                        fontSize: '112px'
+                    },
+                    class: {
+                        red: true,
+                        green: false
+                    },
+                    domProps: {
+                        innerHTML: 'ssssss'
+                    }
+                },"p标签内容")
+
+            }
+        })
+        vm.$mount('#app');//等同于el:'#app',将vue实例挂载到dom节点上
+
+
+
+          
+        /*
+            template模版[string形式] -> AST树[对象形式] -> 数据绑定 -> render()渲染函数 -> VNode虚拟dom -> 真实dom
+
+            首先初始化vue实例 -> 查看el是否绑定dom节点，若绑定则template模版开始执行渲染流程 -> 若el没绑定dom节点，其会查看vm.$mount();是否绑定dom节点，若绑定其会寻找template模版开始执行渲染流程
+            - - > 若两者都没绑定dom节点，那vue实例就不起作用
+            若两者之一虽成功绑定dom节点，但没有template模版，它们会执行app.outerHTML获取到节点的字符串形式，将其当作template模版执行渲染流程，所以此dom节点非彼dom节点; app.outerHTML;dom节点的outerHTML属性，<div id="#app">, id可直接获取
+        
+        */   
+        
+   
+        
+        
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <div id="app">
+        <my-component></my-component>
+        <my-component></my-component>
+        <my-component></my-component>
+        <my-component></my-component>
+    </div>
+    <script>
+        let data = {
+            count: 0
+        }
+        // 全局组件中data属性值必须写为方法的形式，否则报错 -> 底层原因：若是直接写为对象，所有组件都使用同一个对象，其中一个组件改变name值便会对其它组件中的name值产生影响，若是写成函数，每次都return一个新对象，便可以解决此问题
+
+        // 测试：若每次都return同一对象，组件修改必然会影响其它组件的值
+        Vue.component('my-component',{
+            template: '<div @click="count++">{{count}}</div>',
+            data: function(){
+                return {
+                    data
+                }
+            }
+        })
+        new Vue({
+            el: "#app",
+            data: {
+                name: "koo"
+            }
+        })        
+    </script>
+</body>
+</html>

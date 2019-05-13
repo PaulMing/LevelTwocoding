@@ -1,0 +1,12 @@
+testDemo:  入门级demo
+
+magazine1: 杂志首页静态页面
+
+magazine2: 杂志数据动态渲染 ->首页“男性穿搭”、“人生整理术”、“读书”中有数据，“读书”再次跳转有数据，剩余两个没有
+index：入口文件；type: 二级页面； articleDetail：三级页面(文章详情页面)；common-list.wxss:共有样式；  utils:存放工具函数、wxs文件
+
+
+magazine3: 杂志重构(组件化开发、ES6.0语法优化[导入导出，promise优化请求函数]、封装函数)，
+
+magazine3 git版 ->github中的版本
+

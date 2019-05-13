@@ -1,0 +1,53 @@
+@import "../common-list.wxss";
+.wrapper{
+  padding: 16rpx;
+}
+/* 头部推荐区 */
+.wrapper .top-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.wrapper .top-container .top-date{
+   position: relative;
+   font-size: 52rpx;
+   letter-spacing: 10rpx;
+}
+.wrapper .top-container .top-date::after{
+  position: absolute;
+  left: 62rpx;
+  top: 86rpx;
+  display: inline-block;
+  content: '';
+  width: 110rpx;
+  height: 4rpx;
+  background-color: #999;
+}
+.wrapper .top-container .top-article{
+  margin-top: 50rpx;
+  font-size: 28rpx;
+}
+.wrapper .top-container image{
+  margin-top: 30rpx;
+}
+/* 用户选择区 */
+.wrapper .select-container text{
+  display: inline-block;
+  padding: 10rpx 28rpx;
+  border: 1px solid #000;
+  font-size: 28rpx;
+  margin: 20rpx 28rpx 20rpx 0;
+}
+.wrapper .select-container .first{
+  background-color: black;
+  color: #fff;
+  padding: 10rpx 36rpx;  
+}
+/* 文章内容区@import导入 */
+
+#main-con{
+  padding-top: 20rpx;
+}
+
+
+

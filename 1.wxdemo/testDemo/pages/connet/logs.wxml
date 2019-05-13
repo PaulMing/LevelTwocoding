@@ -1,0 +1,10 @@
+<view class="container">
+    <view class="pic-box">
+        <image mode="widthFix" src="/image/picture.png"/>
+        <text class="title" >你是一树一树的花开，是燕在梁间呢喃，——你是爱，是暖，是希望，你是人间的四月天！</text>
+    </view>
+    <view class="titleAuthor">
+        <text  bind:tap="resOldPage">--林徽因</text>
+    </view>
+</view>
+

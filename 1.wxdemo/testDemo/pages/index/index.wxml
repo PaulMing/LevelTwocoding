@@ -1,0 +1,33 @@
+<!-- 
+    page -> html -> 根标签
+    div -> view容器组件 
+    img -> image图片组件
+    span -> text文字组件
+ -->
+ <view class="container">
+    <image class="avatar" src="/image/avatar.png" />
+    <text class="name" decode="true" >Paul&nbsp;Ming</text>
+    <text class="welcome" bind:tap="tapNewPage">PaulMing的毕业设计作品</text>
+ </view>
+
+
+<view>
+  <!-- <view hover-class="changeStyle" hover-stop-propagation="false" hover-start-time=50 hover-stay-time=400></view> -->
+  <!-- 相对路径 -->
+  <!-- <image src="../../image/avatar.png"> -->
+  <!-- 绝对路径:/表示根目录，若是不写其默认pages/index/image/avatar.png,必然找不到图片-->
+  <!-- <image mode="widthFix" src="/image/avatar.png"></image> -->
+  <!-- 使用text组件原因(其直接写文字也可识别)：text组件中文字可“长按选中”，而且语义化也更好 -->
+  <!-- <text selectable="true" space="false" decode="true">小&nbsp;&nbsp;程序</text> -->
+</view> 
+
+<!-- 
+<view bind:tap="testevent">
+  <view bindtap="testevent1">click1</view>
+  <view catch:tap="testevent2">click2</view>
+</view> -->
+
+
+
+
+

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <div id="app"></div>
+    <script>
+        new Vue({
+            el: "#app",
+            // render函数渲染页面：
+            // 1.其同template模版相同，其也会覆盖HTML模版
+            // 2.函数参数为createElement,返回函数执行的结果 -> 该函数中的参数：首个参数为字符串or对象，表示将要创建的dom节点；第二个参数为对象，表示配置项，选填；第三个参数：数组形式，表示其的子节点
+            // createElement表示的便是创建dom节点，其的语义化较好，当然也可以取用其它名字
+            render: function(createElement){
+                return createElement("div",['HelloVue']);
+            },
+            // 若函数的第三个参数需创建dom节点，依旧需使用createElement()方法进行创建
+            // render: function(createElement){
+            //     return createElement("div",['hellovue',createElement('p',["hellojs"])])
+            // }      
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+
+
+  <!-- <view class="container">
+      <text class="top-date">{{data}}</text>
+      <text class="top-article">百度百度百度八点就反垃圾的了解法律</text>
+      <image class="image" src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=3646859509,724662496&fm=58&s=4093C73284B159800D6C4CC60000E0B2&bpow=121&bpoh=75"></image>
+  </view> -->
+
+  <view class="container" id="ceshi">
+    <slot name="before"></slot>
+    <text class="big-title">{{magazineId === 0 ? date : magazineTypeArr[magazineId]}}</text>
+    <text class="title">{{recommend.title}}</text>
+    
+
+    <image class="image" src="{{recommend.imgSrc || '' }}" wx:if="{{recommend.imgSrc}}"/>
+
+    <view class="skeleton" hidden="{{recommend.imgSrc}}">
+        <view class="loader"></view>
+    </view>
+ </view>
+ 

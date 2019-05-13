@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- @2.5.17版本,下载指定版本；若直接写"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"，其会直接下载最新版本 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <div id="app">
+        <!-- 数据绑定：{{}}插值语法，其支持javaScript表达式,但不支持语句以及if,for循环 -->
+        <h1>{{name}}</h1>
+        <h2>{{name + "123"}}</h2>
+        <h3>{{age > 18 ? 'yes': 'no'}}</h3>
+        <h4>{{message.split('').reverse().join('')}}</h4>
+        <!-- 函数执行也OK -->
+        <h1>{{sayName()}}</h1>
+        <!-- 错误 -->
+        <p>{{var a = 1}}</p>
+        <p>{{if(ok){return message}}}</p>
+
+        <!-- 指令 -->
+        <!-- v-once指令：其能执行一次性插值，当数据改变时，插值处的内容不会再更新 -->
+        <p v-once>{{name}}</p>
+
+        <!-- v-bind指令：实现属性的绑定，vue不能识别属性中的字符串，其只能识别变量，所以需要使用bind -->
+        <a href="{{link}}">错误--未能跳转</a>
+        <a v-bind:href="link">成功跳转</a>
+
+        <!--v-html指令：插值语法会将数据解析为普通文本，不能解析为HTML代码，所以需要使用v-html指令 -->
+        <!-- v-html指令渲染HTML代码很容易导致XSS攻击，建议不使用该指令 -->
+        <p>{{html}}</p>
+        <p v-html="html"></p>
+    </div>
+    <script>
+        // vue实例 -> el字段/属性：属性值为css选择器，表示vue控制哪段html模版
+        // vue实例化对象的data、methods属性下的数据都直接挂载到了该实例化对象，也就是挂载到了this上，所以使用this.name即可，不能写this.data.name
+        new Vue({
+            el: '#app',
+            data: {
+                name: 'paul',
+                message: "hellovue",
+                link: "https://www.baidu.com",
+                html: "<a href='https://www.baidu.com'></a>"
+            },
+            methods: {
+                sayName: function(){
+                    return "paul"
+                    // return this.name;
+                }
+            }
+        })
+
+
+    </script>
+</body>
+</html>

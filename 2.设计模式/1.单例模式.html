@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 研究创建对象
+        // 单例模式：一个类仅创建一个对象,不需要频繁创建新对象,节省性能; -> 实际就是把第一次创建的对象保存起来
+
+        // 第一种方案：有bug
+        function Test(name){
+            // var this = Object.create(Test.prototype);
+            if(typeof Test.instance === 'object'){
+                return Test.instance;
+            }
+            this.name = name;
+            Test.instance = this;
+        }
+        var a = new Test('one');
+        // Test.instance = {};//不符合开闭原则,容易被改变
+        var b = new Test();
+        console.log(a == b);
+        
+
+        // 第二种方案：有bug
+        function Test (name) {
+            var instance = this;
+            this.name = name;
+            Test = function () { 
+                return instance;
+            }
+        }
+        var a = new Test('a');
+        Test.prototype.say = function () {
+            alert(0)
+        }
+        var b = new Test('a');//此时Test()已经变化,原型上的属性也就发生了改变
+        console.log(a == b);
+
+
+        // 第三种方案：完美单例模式
+        var Test = (function () {
+            var instance = null;
+            return function (name) {
+                 if (instance) {
+                    return instance;
+                 }
+                this.name = name;
+                instance = this;
+            }
+         })();
+         var a = new Test('a');
+         var b = new Test('a');
+         Test.prototype.say = function () {
+            alert(0)   
+         }
+         var c = new Test('a');
+         console.log(a == b, b == c);
+
+    </script>
+</body>
+</html>

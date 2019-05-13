@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <div id="app">
+        <!-- v-model底层实现原理 -->
+        <input type="text" v-bind:value="value" v-on:input="input">
+        <p>{{value}}</p>
+    </div>
+    <script>
+     new Vue({
+        el: "#app",
+        data:{
+            value: "paul"
+        },
+        methods:{
+            input: function(e){
+                this.value = e.target.value;
+            }
+        }
+    })
+    </script> 
+</body>
+</html>
